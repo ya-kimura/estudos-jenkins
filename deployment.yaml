@@ -1,0 +1,28 @@
+apiVersion: "apps/v1"
+kind: Deployment
+metadata:
+  name: "hello"
+  namespace: "default"
+  labels:
+     app: "hello"
+spec: 
+  replicas: 1
+  selector: 
+     matchLabels:   
+       app: "hello"
+  template:
+    metadata: 
+      labels:
+         app: "hello"
+
+    spec: 
+      containers:
+      - name: "hello"
+        image: "gcr.io/dogherodevelopment/app-hello:1.0"
+        env:
+        - name: "FLASK_APP"
+          value: "hello.py"
+          
+
+
+ 
